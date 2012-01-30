@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5CF5861F14D649DF00E8B7E0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5861E14D649DF00E8B7E0 /* Cocoa.framework */; };
+		5CF5862914D649DF00E8B7E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CF5862714D649DF00E8B7E0 /* InfoPlist.strings */; };
+		5CF5862B14D649DF00E8B7E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5862A14D649DF00E8B7E0 /* main.m */; };
+		5CF5862F14D649DF00E8B7E0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5CF5862D14D649DF00E8B7E0 /* Credits.rtf */; };
+		5CF5863214D649DF00E8B7E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5863114D649DF00E8B7E0 /* AppDelegate.m */; };
+		5CF5863514D649E000E8B7E0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF5863314D649E000E8B7E0 /* MainMenu.xib */; };
+		5CF5863D14D649E000E8B7E0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5863C14D649E000E8B7E0 /* SenTestingKit.framework */; };
+		5CF5863E14D649E000E8B7E0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5861E14D649DF00E8B7E0 /* Cocoa.framework */; };
+		5CF5864614D649E000E8B7E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CF5864414D649E000E8B7E0 /* InfoPlist.strings */; };
+		5CF5864914D649E000E8B7E0 /* kinectBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5864814D649E000E8B7E0 /* kinectBrowserTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5CF5863F14D649E000E8B7E0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5CF5861114D649DF00E8B7E0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5CF5861914D649DF00E8B7E0;
+			remoteInfo = kinectBrowser;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5CF5861A14D649DF00E8B7E0 /* kinectBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kinectBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CF5861E14D649DF00E8B7E0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5CF5862114D649DF00E8B7E0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		5CF5862214D649DF00E8B7E0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		5CF5862314D649DF00E8B7E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5CF5862614D649DF00E8B7E0 /* kinectBrowser-Info.plist */ = {isa = PBXFileReference; path = "kinectBrowser-Info.plist"; sourceTree = "<group>"; };
+		5CF5862814D649DF00E8B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5CF5862A14D649DF00E8B7E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5CF5862C14D649DF00E8B7E0 /* kinectBrowser-Prefix.pch */ = {isa = PBXFileReference; path = "kinectBrowser-Prefix.pch"; sourceTree = "<group>"; };
+		5CF5862E14D649DF00E8B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		5CF5863014D649DF00E8B7E0 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		5CF5863114D649DF00E8B7E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5CF5863414D649E000E8B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		5CF5863B14D649E000E8B7E0 /* kinectBrowserTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kinectBrowserTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CF5863C14D649E000E8B7E0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		5CF5864314D649E000E8B7E0 /* kinectBrowserTests-Info.plist */ = {isa = PBXFileReference; path = "kinectBrowserTests-Info.plist"; sourceTree = "<group>"; };
+		5CF5864514D649E000E8B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5CF5864714D649E000E8B7E0 /* kinectBrowserTests.h */ = {isa = PBXFileReference; path = kinectBrowserTests.h; sourceTree = "<group>"; };
+		5CF5864814D649E000E8B7E0 /* kinectBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kinectBrowserTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5CF5861714D649DF00E8B7E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CF5861F14D649DF00E8B7E0 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CF5863714D649E000E8B7E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CF5863D14D649E000E8B7E0 /* SenTestingKit.framework in Frameworks */,
+				5CF5863E14D649E000E8B7E0 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5CF5860F14D649DF00E8B7E0 = {
+			isa = PBXGroup;
+			children = (
+				5CF5862414D649DF00E8B7E0 /* kinectBrowser */,
+				5CF5864114D649E000E8B7E0 /* kinectBrowserTests */,
+				5CF5861D14D649DF00E8B7E0 /* Frameworks */,
+				5CF5861B14D649DF00E8B7E0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5CF5861B14D649DF00E8B7E0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5861A14D649DF00E8B7E0 /* kinectBrowser.app */,
+				5CF5863B14D649E000E8B7E0 /* kinectBrowserTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5CF5861D14D649DF00E8B7E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5861E14D649DF00E8B7E0 /* Cocoa.framework */,
+				5CF5863C14D649E000E8B7E0 /* SenTestingKit.framework */,
+				5CF5862014D649DF00E8B7E0 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5CF5862014D649DF00E8B7E0 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5862114D649DF00E8B7E0 /* AppKit.framework */,
+				5CF5862214D649DF00E8B7E0 /* CoreData.framework */,
+				5CF5862314D649DF00E8B7E0 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		5CF5862414D649DF00E8B7E0 /* kinectBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5863014D649DF00E8B7E0 /* AppDelegate.h */,
+				5CF5863114D649DF00E8B7E0 /* AppDelegate.m */,
+				5CF5863314D649E000E8B7E0 /* MainMenu.xib */,
+				5CF5862514D649DF00E8B7E0 /* Supporting Files */,
+			);
+			path = kinectBrowser;
+			sourceTree = "<group>";
+		};
+		5CF5862514D649DF00E8B7E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5862614D649DF00E8B7E0 /* kinectBrowser-Info.plist */,
+				5CF5862714D649DF00E8B7E0 /* InfoPlist.strings */,
+				5CF5862A14D649DF00E8B7E0 /* main.m */,
+				5CF5862C14D649DF00E8B7E0 /* kinectBrowser-Prefix.pch */,
+				5CF5862D14D649DF00E8B7E0 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5CF5864114D649E000E8B7E0 /* kinectBrowserTests */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5864714D649E000E8B7E0 /* kinectBrowserTests.h */,
+				5CF5864814D649E000E8B7E0 /* kinectBrowserTests.m */,
+				5CF5864214D649E000E8B7E0 /* Supporting Files */,
+			);
+			path = kinectBrowserTests;
+			sourceTree = "<group>";
+		};
+		5CF5864214D649E000E8B7E0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5864314D649E000E8B7E0 /* kinectBrowserTests-Info.plist */,
+				5CF5864414D649E000E8B7E0 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5CF5861914D649DF00E8B7E0 /* kinectBrowser */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CF5864C14D649E000E8B7E0 /* Build configuration list for PBXNativeTarget "kinectBrowser" */;
+			buildPhases = (
+				5CF5861614D649DF00E8B7E0 /* Sources */,
+				5CF5861714D649DF00E8B7E0 /* Frameworks */,
+				5CF5861814D649DF00E8B7E0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = kinectBrowser;
+			productName = kinectBrowser;
+			productReference = 5CF5861A14D649DF00E8B7E0 /* kinectBrowser.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5CF5863A14D649E000E8B7E0 /* kinectBrowserTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CF5864F14D649E000E8B7E0 /* Build configuration list for PBXNativeTarget "kinectBrowserTests" */;
+			buildPhases = (
+				5CF5863614D649E000E8B7E0 /* Sources */,
+				5CF5863714D649E000E8B7E0 /* Frameworks */,
+				5CF5863814D649E000E8B7E0 /* Resources */,
+				5CF5863914D649E000E8B7E0 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CF5864014D649E000E8B7E0 /* PBXTargetDependency */,
+			);
+			name = kinectBrowserTests;
+			productName = kinectBrowserTests;
+			productReference = 5CF5863B14D649E000E8B7E0 /* kinectBrowserTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5CF5861114D649DF00E8B7E0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 5CF5861414D649DF00E8B7E0 /* Build configuration list for PBXProject "kinectBrowser" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5CF5860F14D649DF00E8B7E0;
+			productRefGroup = 5CF5861B14D649DF00E8B7E0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5CF5861914D649DF00E8B7E0 /* kinectBrowser */,
+				5CF5863A14D649E000E8B7E0 /* kinectBrowserTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5CF5861814D649DF00E8B7E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CF5862914D649DF00E8B7E0 /* InfoPlist.strings in Resources */,
+				5CF5862F14D649DF00E8B7E0 /* Credits.rtf in Resources */,
+				5CF5863514D649E000E8B7E0 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CF5863814D649E000E8B7E0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CF5864614D649E000E8B7E0 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5CF5863914D649E000E8B7E0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5CF5861614D649DF00E8B7E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CF5862B14D649DF00E8B7E0 /* main.m in Sources */,
+				5CF5863214D649DF00E8B7E0 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CF5863614D649E000E8B7E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CF5864914D649E000E8B7E0 /* kinectBrowserTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5CF5864014D649E000E8B7E0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5CF5861914D649DF00E8B7E0 /* kinectBrowser */;
+			targetProxy = 5CF5863F14D649E000E8B7E0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5CF5862714D649DF00E8B7E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CF5862814D649DF00E8B7E0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5CF5862D14D649DF00E8B7E0 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CF5862E14D649DF00E8B7E0 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		5CF5863314D649E000E8B7E0 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CF5863414D649E000E8B7E0 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		5CF5864414D649E000E8B7E0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CF5864514D649E000E8B7E0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5CF5864A14D649E000E8B7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5CF5864B14D649E000E8B7E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5CF5864D14D649E000E8B7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kinectBrowser/kinectBrowser-Prefix.pch";
+				INFOPLIST_FILE = "kinectBrowser/kinectBrowser-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5CF5864E14D649E000E8B7E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kinectBrowser/kinectBrowser-Prefix.pch";
+				INFOPLIST_FILE = "kinectBrowser/kinectBrowser-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5CF5865014D649E000E8B7E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/kinectBrowser.app/Contents/MacOS/kinectBrowser";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kinectBrowser/kinectBrowser-Prefix.pch";
+				INFOPLIST_FILE = "kinectBrowserTests/kinectBrowserTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		5CF5865114D649E000E8B7E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/kinectBrowser.app/Contents/MacOS/kinectBrowser";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "kinectBrowser/kinectBrowser-Prefix.pch";
+				INFOPLIST_FILE = "kinectBrowserTests/kinectBrowserTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5CF5861414D649DF00E8B7E0 /* Build configuration list for PBXProject "kinectBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CF5864A14D649E000E8B7E0 /* Debug */,
+				5CF5864B14D649E000E8B7E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CF5864C14D649E000E8B7E0 /* Build configuration list for PBXNativeTarget "kinectBrowser" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CF5864D14D649E000E8B7E0 /* Debug */,
+				5CF5864E14D649E000E8B7E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5CF5864F14D649E000E8B7E0 /* Build configuration list for PBXNativeTarget "kinectBrowserTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CF5865014D649E000E8B7E0 /* Debug */,
+				5CF5865114D649E000E8B7E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5CF5861114D649DF00E8B7E0 /* Project object */;
+}
