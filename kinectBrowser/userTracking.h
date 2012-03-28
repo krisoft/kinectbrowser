@@ -7,7 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
+#include <XnCppWrapper.h>
+#import <WebKit/WebKit.h>
 
-@interface userTracking : NSObject
 
-@end
+class UserTracker
+{
+public:
+	XnStatus Init(xn::Context* context);
+	XnStatus Run();
+    WebView *web;
+    xn::UserGenerator       m_UserGenerator;
+    NSArray* positionOfUser(int userId);
+    NSArray* positionOfJoint(int userId,NSString* jointName);
+    NSArray* getUsers();
+    NSArray* getTrackedUsers();
+    
+    int whoIsThere(XnPoint3D &there);
+    const XnLabel* firstUserPixels();
+private:
+    static void XN_CALLBACK_TYPE NewUser(xn::UserGenerator& generator, XnUserID nId, void* pCookie);
+    static void XN_CALLBACK_TYPE LostUser(xn::UserGenerator& generator, XnUserID nId, void* pCookie);
+    static void XN_CALLBACK_TYPE ExitUser(xn::UserGenerator& generator, XnUserID nId, void* pCookie);
+    static void XN_CALLBACK_TYPE ReEnterUser(xn::UserGenerator& generator, XnUserID nId, void* pCookie);
+    static void XN_CALLBACK_TYPE CalibrationComplete(xn::SkeletonCapability& capability, XnUserID nId, XnCalibrationStatus eStatus, void* pCookie);
+	xn::Context*			m_rContext;
+};

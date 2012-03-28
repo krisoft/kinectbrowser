@@ -7,16 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C61334914E30F7A00561F93 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C61334814E30F7A00561F93 /* QTKit.framework */; };
 		5CF5861F14D649DF00E8B7E0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5861E14D649DF00E8B7E0 /* Cocoa.framework */; };
 		5CF5862914D649DF00E8B7E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CF5862714D649DF00E8B7E0 /* InfoPlist.strings */; };
 		5CF5862B14D649DF00E8B7E0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5862A14D649DF00E8B7E0 /* main.m */; };
 		5CF5862F14D649DF00E8B7E0 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 5CF5862D14D649DF00E8B7E0 /* Credits.rtf */; };
-		5CF5863214D649DF00E8B7E0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5863114D649DF00E8B7E0 /* AppDelegate.m */; };
+		5CF5863214D649DF00E8B7E0 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5863114D649DF00E8B7E0 /* AppDelegate.mm */; };
 		5CF5863514D649E000E8B7E0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CF5863314D649E000E8B7E0 /* MainMenu.xib */; };
 		5CF5863D14D649E000E8B7E0 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5863C14D649E000E8B7E0 /* SenTestingKit.framework */; };
 		5CF5863E14D649E000E8B7E0 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5861E14D649DF00E8B7E0 /* Cocoa.framework */; };
 		5CF5864614D649E000E8B7E0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CF5864414D649E000E8B7E0 /* InfoPlist.strings */; };
 		5CF5864914D649E000E8B7E0 /* kinectBrowserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5864814D649E000E8B7E0 /* kinectBrowserTests.m */; };
+		5CF5865714D64A2D00E8B7E0 /* kinect_config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5CF5865214D64A2D00E8B7E0 /* kinect_config.xml */; };
+		5CF5865814D64A2D00E8B7E0 /* kinectView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5865414D64A2D00E8B7E0 /* kinectView.mm */; };
+		5CF5865914D64A2D00E8B7E0 /* refreshWIndow.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5865614D64A2D00E8B7E0 /* refreshWIndow.mm */; };
+		5CF5865B14D64B0300E8B7E0 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5865A14D64B0300E8B7E0 /* WebKit.framework */; };
+		5CF5866B14D6513F00E8B7E0 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5866A14D6513F00E8B7E0 /* OpenGL.framework */; };
+		5CF5866D14D651F200E8B7E0 /* libOpenNI.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF5866C14D651F200E8B7E0 /* libOpenNI.dylib */; };
+		5CF5867414D6603B00E8B7E0 /* userTracking.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5867314D6603B00E8B7E0 /* userTracking.mm */; };
+		5CF5867714D66DDF00E8B7E0 /* gestureTracking.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5867614D66DDF00E8B7E0 /* gestureTracking.mm */; };
+		5CF5867A14D67A9700E8B7E0 /* handTracking.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5CF5867914D67A9700E8B7E0 /* handTracking.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,25 +40,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C61334814E30F7A00561F93 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		5CF5861A14D649DF00E8B7E0 /* kinectBrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = kinectBrowser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CF5861E14D649DF00E8B7E0 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5CF5862114D649DF00E8B7E0 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		5CF5862214D649DF00E8B7E0 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5CF5862314D649DF00E8B7E0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		5CF5862614D649DF00E8B7E0 /* kinectBrowser-Info.plist */ = {isa = PBXFileReference; path = "kinectBrowser-Info.plist"; sourceTree = "<group>"; };
+		5CF5862614D649DF00E8B7E0 /* kinectBrowser-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kinectBrowser-Info.plist"; sourceTree = "<group>"; };
 		5CF5862814D649DF00E8B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5CF5862A14D649DF00E8B7E0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		5CF5862C14D649DF00E8B7E0 /* kinectBrowser-Prefix.pch */ = {isa = PBXFileReference; path = "kinectBrowser-Prefix.pch"; sourceTree = "<group>"; };
+		5CF5862C14D649DF00E8B7E0 /* kinectBrowser-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "kinectBrowser-Prefix.pch"; sourceTree = "<group>"; };
 		5CF5862E14D649DF00E8B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		5CF5863014D649DF00E8B7E0 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
-		5CF5863114D649DF00E8B7E0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		5CF5863014D649DF00E8B7E0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5CF5863114D649DF00E8B7E0 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		5CF5863414D649E000E8B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		5CF5863B14D649E000E8B7E0 /* kinectBrowserTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = kinectBrowserTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CF5863C14D649E000E8B7E0 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		5CF5864314D649E000E8B7E0 /* kinectBrowserTests-Info.plist */ = {isa = PBXFileReference; path = "kinectBrowserTests-Info.plist"; sourceTree = "<group>"; };
+		5CF5864314D649E000E8B7E0 /* kinectBrowserTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "kinectBrowserTests-Info.plist"; sourceTree = "<group>"; };
 		5CF5864514D649E000E8B7E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5CF5864714D649E000E8B7E0 /* kinectBrowserTests.h */ = {isa = PBXFileReference; path = kinectBrowserTests.h; sourceTree = "<group>"; };
+		5CF5864714D649E000E8B7E0 /* kinectBrowserTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = kinectBrowserTests.h; sourceTree = "<group>"; };
 		5CF5864814D649E000E8B7E0 /* kinectBrowserTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = kinectBrowserTests.m; sourceTree = "<group>"; };
+		5CF5865214D64A2D00E8B7E0 /* kinect_config.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = kinect_config.xml; sourceTree = "<group>"; };
+		5CF5865314D64A2D00E8B7E0 /* kinectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = kinectView.h; sourceTree = "<group>"; };
+		5CF5865414D64A2D00E8B7E0 /* kinectView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = kinectView.mm; sourceTree = "<group>"; };
+		5CF5865514D64A2D00E8B7E0 /* refreshWIndow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = refreshWIndow.h; sourceTree = "<group>"; };
+		5CF5865614D64A2D00E8B7E0 /* refreshWIndow.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = refreshWIndow.mm; sourceTree = "<group>"; };
+		5CF5865A14D64B0300E8B7E0 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		5CF5866A14D6513F00E8B7E0 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		5CF5866C14D651F200E8B7E0 /* libOpenNI.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI.dylib; path = ../../../../../../usr/lib/libOpenNI.dylib; sourceTree = "<group>"; };
+		5CF5867214D6603B00E8B7E0 /* userTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = userTracking.h; sourceTree = "<group>"; };
+		5CF5867314D6603B00E8B7E0 /* userTracking.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = userTracking.mm; sourceTree = "<group>"; };
+		5CF5867514D66DDF00E8B7E0 /* gestureTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gestureTracking.h; sourceTree = "<group>"; };
+		5CF5867614D66DDF00E8B7E0 /* gestureTracking.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = gestureTracking.mm; sourceTree = "<group>"; };
+		5CF5867814D67A9700E8B7E0 /* handTracking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = handTracking.h; sourceTree = "<group>"; };
+		5CF5867914D67A9700E8B7E0 /* handTracking.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = handTracking.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +81,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C61334914E30F7A00561F93 /* QTKit.framework in Frameworks */,
+				5CF5866B14D6513F00E8B7E0 /* OpenGL.framework in Frameworks */,
+				5CF5865B14D64B0300E8B7E0 /* WebKit.framework in Frameworks */,
 				5CF5861F14D649DF00E8B7E0 /* Cocoa.framework in Frameworks */,
+				5CF5866D14D651F200E8B7E0 /* libOpenNI.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,9 +101,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C61333E14E3022200561F93 /* kinect */ = {
+			isa = PBXGroup;
+			children = (
+				5CF5865314D64A2D00E8B7E0 /* kinectView.h */,
+				5CF5865414D64A2D00E8B7E0 /* kinectView.mm */,
+				5CF5867214D6603B00E8B7E0 /* userTracking.h */,
+				5CF5867314D6603B00E8B7E0 /* userTracking.mm */,
+				5CF5867514D66DDF00E8B7E0 /* gestureTracking.h */,
+				5CF5867614D66DDF00E8B7E0 /* gestureTracking.mm */,
+				5CF5867814D67A9700E8B7E0 /* handTracking.h */,
+				5CF5867914D67A9700E8B7E0 /* handTracking.mm */,
+			);
+			name = kinect;
+			sourceTree = "<group>";
+		};
 		5CF5860F14D649DF00E8B7E0 = {
 			isa = PBXGroup;
 			children = (
+				5C61334814E30F7A00561F93 /* QTKit.framework */,
+				5CF5866A14D6513F00E8B7E0 /* OpenGL.framework */,
+				5CF5865A14D64B0300E8B7E0 /* WebKit.framework */,
 				5CF5862414D649DF00E8B7E0 /* kinectBrowser */,
 				5CF5864114D649E000E8B7E0 /* kinectBrowserTests */,
 				5CF5861D14D649DF00E8B7E0 /* Frameworks */,
@@ -94,6 +141,7 @@
 		5CF5861D14D649DF00E8B7E0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CF5866C14D651F200E8B7E0 /* libOpenNI.dylib */,
 				5CF5861E14D649DF00E8B7E0 /* Cocoa.framework */,
 				5CF5863C14D649E000E8B7E0 /* SenTestingKit.framework */,
 				5CF5862014D649DF00E8B7E0 /* Other Frameworks */,
@@ -114,8 +162,11 @@
 		5CF5862414D649DF00E8B7E0 /* kinectBrowser */ = {
 			isa = PBXGroup;
 			children = (
+				5C61333E14E3022200561F93 /* kinect */,
+				5CF5865514D64A2D00E8B7E0 /* refreshWIndow.h */,
+				5CF5865614D64A2D00E8B7E0 /* refreshWIndow.mm */,
 				5CF5863014D649DF00E8B7E0 /* AppDelegate.h */,
-				5CF5863114D649DF00E8B7E0 /* AppDelegate.m */,
+				5CF5863114D649DF00E8B7E0 /* AppDelegate.mm */,
 				5CF5863314D649E000E8B7E0 /* MainMenu.xib */,
 				5CF5862514D649DF00E8B7E0 /* Supporting Files */,
 			);
@@ -125,6 +176,7 @@
 		5CF5862514D649DF00E8B7E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5CF5865214D64A2D00E8B7E0 /* kinect_config.xml */,
 				5CF5862614D649DF00E8B7E0 /* kinectBrowser-Info.plist */,
 				5CF5862714D649DF00E8B7E0 /* InfoPlist.strings */,
 				5CF5862A14D649DF00E8B7E0 /* main.m */,
@@ -226,6 +278,7 @@
 				5CF5862914D649DF00E8B7E0 /* InfoPlist.strings in Resources */,
 				5CF5862F14D649DF00E8B7E0 /* Credits.rtf in Resources */,
 				5CF5863514D649E000E8B7E0 /* MainMenu.xib in Resources */,
+				5CF5865714D64A2D00E8B7E0 /* kinect_config.xml in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +314,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CF5862B14D649DF00E8B7E0 /* main.m in Sources */,
-				5CF5863214D649DF00E8B7E0 /* AppDelegate.m in Sources */,
+				5CF5863214D649DF00E8B7E0 /* AppDelegate.mm in Sources */,
+				5CF5865814D64A2D00E8B7E0 /* kinectView.mm in Sources */,
+				5CF5865914D64A2D00E8B7E0 /* refreshWIndow.mm in Sources */,
+				5CF5867414D6603B00E8B7E0 /* userTracking.mm in Sources */,
+				5CF5867714D66DDF00E8B7E0 /* gestureTracking.mm in Sources */,
+				5CF5867A14D67A9700E8B7E0 /* handTracking.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,10 +427,19 @@
 		5CF5864D14D649E000E8B7E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_ENABLE_OBJC_GC = required;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kinectBrowser/kinectBrowser-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/usr/include/ni/**";
 				INFOPLIST_FILE = "kinectBrowser/kinectBrowser-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/\"",
+					"\"/usr/lib\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"/usr/lib\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -380,10 +447,19 @@
 		5CF5864E14D649E000E8B7E0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_ENABLE_OBJC_GC = required;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "kinectBrowser/kinectBrowser-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/usr/include/ni/**";
 				INFOPLIST_FILE = "kinectBrowser/kinectBrowser-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"\"$(SRCROOT)/\"",
+					"\"/usr/lib\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "\"/usr/lib\"";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -435,6 +511,7 @@
 				5CF5864E14D649E000E8B7E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5CF5864F14D649E000E8B7E0 /* Build configuration list for PBXNativeTarget "kinectBrowserTests" */ = {
 			isa = XCConfigurationList;
@@ -443,6 +520,7 @@
 				5CF5865114D649E000E8B7E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

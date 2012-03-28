@@ -12,21 +12,273 @@ using namespace xn;
 
 #import "kinectView.h"
 #import <OpenGL/gl.h>
+#import <Foundation/Foundation.h>
+#import <Foundation/NSKeyValueCoding.h>
 
 #define LENGTHOF(arr)			(sizeof(arr)/sizeof(arr[0]))
 
 @implementation kinectView
 
-@synthesize app;
+@synthesize web = _web;
 
 - (void)awakeFromNib {
     kinect_ready = NO;
+    [self setHidden:YES];
+    left = YES;
+    top = NO;
+    x = 100;
+    y = 100;
+    width = 300;
+    height = 200;
+    aR = 62;
+    aG = 63;
+    aB = 47;
+    
+    bR = 252;
+    bG = 253;
+    bB = 248;
+    
+    uR = 145;
+    uG = 129;
+    uB = 30;
+    activeUserId = -1;
+    [self startKinect];
+}
+
+- (void) repositionTo:(NSRect)rect{
+    oldRect = rect;
+    NSRect f;
+    f.size.width = width;
+    f.size.height = height;
+    if(left){
+        f.origin.x = x;
+    }else{
+        f.origin.x = rect.size.width-width-x;
+    }
+    if(!top){
+        f.origin.y = y;
+    }else{
+        f.origin.y = rect.size.height-height-y;
+    }
+    self.frame = f;
+}
+
+
+
++(NSString*)webScriptNameForSelector:(SEL)sel
+{
+    if(sel == @selector(enable))
+        return @"enable";
+    if(sel == @selector(disable))
+        return @"disable";
+    if(sel == @selector(trackHand:))
+        return @"trackHand";
+    if(sel == @selector(whereUser:))
+        return @"whereUser";
+    if(sel == @selector(activeUser:))
+        return @"activeUser";
+    if(sel == @selector(whoIsThere:))
+        return @"whoIsThere";
+    if(sel == @selector(positionOfUser: joint:))
+        return @"positionOfJoint";
+    if(sel == @selector(getUsers))
+        return @"getUsers";
+    if(sel == @selector(getTrackedUsers))
+        return @"getTrackedUsers";
+    if(sel == @selector(style:))
+        return @"style";
+    if(sel == @selector(log:))
+        return @"log";
+    return nil;
+}
+
+//this allows JavaScript to call the -logJavaScriptString: method
++ (BOOL)isSelectorExcludedFromWebScript:(SEL)sel
+{
+    if(sel == @selector(enable))
+        return NO;
+    if(sel == @selector(disable))
+        return NO;
+    if(sel == @selector(whereUser:))
+        return NO;
+    if(sel == @selector(activeUser:))
+        return NO;
+    if(sel == @selector(whoIsThere:))
+        return NO;
+    if(sel == @selector(positionOfUser: joint:))
+        return NO;
+
+    if(sel == @selector(getUsers))
+        return NO;
+    if(sel == @selector(getTrackedUsers))
+        return NO;
+    if(sel == @selector(trackHand:))
+        return NO;
+    if(sel == @selector(style:))
+        return NO;
+    if(sel == @selector(log:))
+        return NO;
+    return YES;
+}
+-(void)log:(NSString*)msg{
+    NSLog(@"js:%@",msg);
+}
+-(void)enable{
+    [self setHidden:NO];
+}
+-(void)disable{
+    [self setHidden:YES];
+}
+-(NSArray *)getUsers{
+    return userTracker.getUsers();
+}
+-(NSArray *)getTrackedUsers{
+    return userTracker.getTrackedUsers();
+}
+-(NSArray *)whereUser:(NSNumber *) num{
+    return userTracker.positionOfUser([num intValue]);
+}
+-(void)activeUser:(NSNumber *) num{
+    activeUserId = [num intValue];
+}
+
+-(id)whoIsThere:(WebScriptObject *) object{
+    if(![object isKindOfClass:[WebScriptObject class]])
+        return [NSNumber numberWithFloat:-1];
+    WebScriptObject *obj = (WebScriptObject*)object;
+    XnPoint3D pos,projected;
+    id xThing = [obj valueForKey:@"x"];
+    if([xThing isKindOfClass:[NSNumber class]]){
+        pos.X = [xThing floatValue];
+    }
+    id yThing = [obj valueForKey:@"y"];
+    if([yThing isKindOfClass:[NSNumber class]]){
+        pos.Y= [yThing floatValue];
+    }
+    id zThing = [obj valueForKey:@"z"];
+    if([zThing isKindOfClass:[NSNumber class]]){
+        pos.Z= [zThing floatValue];
+    }
+    g_depth.ConvertRealWorldToProjective(1, &pos, &projected);
+    int user = userTracker.whoIsThere(projected);
+    return [NSNumber numberWithInt:user];
+}
+-(id)positionOfUser:(NSNumber*) userId joint:(NSString*) jointName{
+    return userTracker.positionOfJoint([userId intValue], jointName);
+}
+-(void)trackHand:(id)object{
+    if(![object isKindOfClass:[WebScriptObject class]])
+        return;
+    WebScriptObject *obj = (WebScriptObject*)object;
+    XnPoint3D pos;
+    id xThing = [obj valueForKey:@"x"];
+    if([xThing isKindOfClass:[NSNumber class]]){
+        pos.X = [xThing floatValue];
+    }
+    id yThing = [obj valueForKey:@"y"];
+    if([yThing isKindOfClass:[NSNumber class]]){
+        pos.Y= [yThing floatValue];
+    }
+    id zThing = [obj valueForKey:@"z"];
+    if([zThing isKindOfClass:[NSNumber class]]){
+        pos.Z= [zThing floatValue];
+    }
+    //handTracker.startTracking(pos);
+}
+-(id) getKey:(NSString*)key fromObj:(WebScriptObject*)obj{
+    @try{
+       return [obj valueForKey:key];
+    } @catch (NSException *e) {
+       return nil;
+    }
+    
+}
+-(void)style:(id)object{
+    if(![object isKindOfClass:[WebScriptObject class]])
+        return;
+    WebScriptObject *obj = (WebScriptObject*)object;
+    id num;
+    
+    num = [self getKey:@"top" fromObj:obj];
+    if(num){
+        y = [num intValue];
+        top = YES;
+    }
+    num = [self getKey:@"bottom" fromObj:obj];
+    if(num){
+        y = [num intValue];
+        top = NO;
+    }
+    num = [self getKey:@"left" fromObj:obj];
+    if(num){
+        x = [num intValue];
+        left = YES;
+    }
+    num = [self getKey:@"right" fromObj:obj];
+    if(num ){
+        x = [num intValue];
+        left = NO;
+    }
+    num = [self getKey:@"width" fromObj:obj];
+    if(num ){
+        width = [num intValue];
+    }
+    num = [self getKey:@"height" fromObj:obj];
+    if(num ){
+        height = [num intValue];
+    }
+    num = [self getKey:@"aR" fromObj:obj];
+    if(num ){
+        aR = [num intValue];
+    }
+    num = [self getKey:@"aG" fromObj:obj];
+    if(num ){
+        aG = [num intValue];
+    }
+    num = [self getKey:@"aB" fromObj:obj];
+    if(num ){
+        aB = [num intValue];
+    }
+    num = [self getKey:@"bR" fromObj:obj];
+    if(num ){
+        bR = [num intValue];
+    }
+    num = [self getKey:@"bG" fromObj:obj];
+    if(num ){
+        bG = [num intValue];
+    }
+    num = [self getKey:@"bB" fromObj:obj];
+    if(num ){
+        bB = [num intValue];
+    }
+
+    
+    num = [self getKey:@"uR" fromObj:obj];
+    if(num ){
+        uR = [num intValue];
+    }
+    num = [self getKey:@"uG" fromObj:obj];
+    if(num ){
+        uG = [num intValue];
+    }
+    num = [self getKey:@"uB" fromObj:obj];
+    if(num ){
+        uB = [num intValue];
+    }
+
+    [self repositionTo:oldRect];
+    
+}
+
+
+-(void) startKinect{
     XnStatus rc;
     
 	EnumerationErrors errors;
     NSString * path = [[NSBundle mainBundle] pathForResource:@"kinect_config" ofType:@"xml"];
     const char * xmlPath = [path UTF8String];
     
+    xn::ScriptNode g_scriptNode;
 	rc = g_context.InitFromXmlFile(xmlPath, g_scriptNode, &errors);
 	if (rc == XN_STATUS_NO_NODE_PRESENT)
 	{
@@ -77,101 +329,47 @@ using namespace xn;
 	g_nTexMapY = (((unsigned short)(g_depthMD.FullYRes()-1) / 512) + 1) * 512;
 	g_pTexMap = (XnRGB24Pixel*)malloc(g_nTexMapX * g_nTexMapY * sizeof(XnRGB24Pixel));
     
-    g_nViewState = DISPLAY_MODE_OVERLAY;
-    g_nViewState = DISPLAY_MODE_DEPTH;
     
     kinect_ready = YES;
-    
-    handtracker.Init(&g_context);
-    handtracker.kinectv = self;
-    handtracker.Run();
-    
+    [self setupGenerators];
     [self performSelector:@selector(refresh:) withObject:nil afterDelay:0.1];
+}
+
+-(void) setupGenerators{
+    userTracker.Init(&g_context);
+    userTracker.web = _web;
+    
+    //gestureTracker.Init(&g_context);
+    //gestureTracker.web = _web;
+    
+    //handTracker.Init(&g_context);
+    //handTracker.web = _web;
+    
+    userTracker.Run();
+    //gestureTracker.Run();
+    //handTracker.Run();
 }
 
 -(void) refresh:(id)hop
 {
+    [self updateKinect];
     [self setNeedsDisplay:YES];
     [self performSelector:@selector(refresh:) withObject:nil afterDelay:0.03];
 }
 
 -(void) ScalePoint:(XnPoint3D&)point
 {
-	point.X *= GL_WIN_SIZE_X;
+	point.X *= self.frame.size.width;
 	point.X /= g_depthMD.XRes();
     
-	point.Y *= GL_WIN_SIZE_Y;
+	point.Y *= self.frame.size.height;
 	point.Y /= g_depthMD.YRes();
 }
--(void) drawHand
-{
-    typedef TrailHistory			History;
-	typedef History::ConstIterator	HistoryIterator;
-	typedef History::Trail			Trail;
-	typedef Trail::ConstIterator	TrailIterator;
 
-	const TrailHistory&	history = handtracker.GetHistory();
-    
-	// History points coordinates buffer
-	XnFloat	coordinates[3 * MAX_HAND_TRAIL_LENGTH];
-    
-    HistoryIterator	hend = history.end();
-	for(HistoryIterator		hit = history.begin(); hit != hend; ++hit)
-	{
-        
-		// Dump the history to local buffer
-		int				numpoints = 0;
-        Trail&	trail = hit.GetTrail();
-        
-		const TrailIterator	tend = trail.end();
-        if(trail.isSteady()){
-            glColor3f(1.0f, 0.05f, 1.35f);
-        }else{
-                glColor3f(0.0f, 1.05f, 0.35f);
-        }
-        //glBegin(GL_LINE_STRIP);
-		for(TrailIterator	tit = trail.begin(); tit != tend; ++tit)
-		{
-			XnPoint3D	point = *tit;
-			g_depth.ConvertRealWorldToProjective(1, &point, &point);
-            [self ScalePoint:point];
-            //glVertex3d(point.X,point.Y,0.0);
-			coordinates[numpoints * 3] = point.X;
-			coordinates[numpoints * 3 + 1] = point.Y;
-			coordinates[numpoints * 3 + 2] = 0;
-            
-			++numpoints;
-		}
-        //glEnd();
-        int status = trail.getStatus();
-        if(status==1){
-            [app sweepUp:self];
-        }
-        if(status==2){
-            [app sweepDown:self];
-        }
-        // #f64744 246 71 68
-        glColor3f(0.96f, 0.27f, 0.26f);
-        glBegin(GL_TRIANGLES);
-        {
-            glVertex3f(  coordinates[0]-5,  coordinates[1]-5, 0.0);
-            glVertex3f(  coordinates[0]+5,  coordinates[1]+5, 0.0);
-            glVertex3f(  coordinates[0]+5,  coordinates[1]-5, 0.0);
-            
-            glVertex3f(  coordinates[0]-5,  coordinates[1]-5, 0.0);
-            glVertex3f(  coordinates[0]+5,  coordinates[1]+5, 0.0);
-            glVertex3f(  coordinates[0]-5,  coordinates[1]+5, 0.0);
-        }
-        glEnd();
-		assert(numpoints <= MAX_HAND_TRAIL_LENGTH);
-        glFlush();
-	}
-}
-
--(void) drawRect: (NSRect) bounds
-{
-    glDisable(GL_DEPTH_TEST);
-	glEnable(GL_TEXTURE_2D);
+-(void) updateKinect{
+    if(!kinect_ready){
+        return;
+    }
     XnStatus rc = XN_STATUS_OK;
     
 	// Read a new frame
@@ -184,6 +382,16 @@ using namespace xn;
     
 	g_depth.GetMetaData(g_depthMD);
 	g_image.GetMetaData(g_imageMD);
+
+}
+
+-(void) drawRect: (NSRect) bounds
+{
+    if(!kinect_ready){
+        return;
+    }
+    glDisable(GL_DEPTH_TEST);
+	glEnable(GL_TEXTURE_2D);
     
 	const XnDepthPixel* pDepth = g_depthMD.Data();
     
@@ -196,15 +404,7 @@ using namespace xn;
 	glMatrixMode(GL_PROJECTION);
 	glPushMatrix();
 	glLoadIdentity();
-	glOrtho(0, GL_WIN_SIZE_X, GL_WIN_SIZE_Y, 0, -1.0, 1.0);
-    /*glColor3f(1.0f, 0.85f, 0.35f);
-    glBegin(GL_TRIANGLES);
-    {
-        glVertex3f(  0.0,  100.0, 0.0);
-        glVertex3f( 100.2, 100.3, 0.0);
-        glVertex3f(  50.2, 50.3 ,0.0);
-    }
-    glEnd();*/
+	glOrtho(0, self.frame.size.width, self.frame.size.height, 0, -1.0, 1.0);
     
 	// Calculate the accumulative histogram (the yellow display...)
 	xnOSMemSet(g_pDepthHist, 0, MAX_DEPTH*sizeof(float));
@@ -234,67 +434,77 @@ using namespace xn;
 	}
     
 	xnOSMemSet(g_pTexMap, 0, g_nTexMapX*g_nTexMapY*sizeof(XnRGB24Pixel));
+    const XnDepthPixel* pDepthRow = g_depthMD.Data();
+    XnRGB24Pixel* pTexRow = g_pTexMap + g_depthMD.YOffset() * g_nTexMapX;
+    int ar = aR;
+    int ag = aG;
+    int ab = aB;
+    int br = bR;
+    int bg = bG;
+    int bb = bB;
     
-	// check if we need to draw image frame to texture
-	if (g_nViewState == DISPLAY_MODE_OVERLAY ||
-		g_nViewState == DISPLAY_MODE_IMAGE)
-	{
-		const XnRGB24Pixel* pImageRow = g_imageMD.RGB24Data();
-		XnRGB24Pixel* pTexRow = g_pTexMap + g_imageMD.YOffset() * g_nTexMapX;
-        
-		for (XnUInt y = 0; y < g_imageMD.YRes(); ++y)
-		{
-			const XnRGB24Pixel* pImage = pImageRow;
-			XnRGB24Pixel* pTex = pTexRow + g_imageMD.XOffset();
+    const XnLabel* userPixels = userTracker.firstUserPixels();
+    if(userPixels==nil){
+        for (XnUInt y = 0; y < g_depthMD.YRes(); ++y)
+        {
+            const XnDepthPixel* pDepth = pDepthRow;
+            XnRGB24Pixel* pTex = pTexRow + g_depthMD.XOffset();
             
-			for (XnUInt x = 0; x < g_imageMD.XRes(); ++x, ++pImage, ++pTex)
-			{
-				*pTex = *pImage;
-			}
-            
-			pImageRow += g_imageMD.XRes();
-			pTexRow += g_nTexMapX;
-		}
-	}
-    
-	// check if we need to draw depth frame to texture
-	if (g_nViewState == DISPLAY_MODE_OVERLAY ||
-		g_nViewState == DISPLAY_MODE_DEPTH)
-	{
-		const XnDepthPixel* pDepthRow = g_depthMD.Data();
-		XnRGB24Pixel* pTexRow = g_pTexMap + g_depthMD.YOffset() * g_nTexMapX;
-        int ar = 62;
-        int ag = 63;
-        int ab = 47;
-        int br = 252;
-        int bg = 253;
-        int bb = 248;
-        
-		for (XnUInt y = 0; y < g_depthMD.YRes(); ++y)
-		{
-			const XnDepthPixel* pDepth = pDepthRow;
-			XnRGB24Pixel* pTex = pTexRow + g_depthMD.XOffset();
-            
-			for (XnUInt x = 0; x < g_depthMD.XRes(); ++x, ++pDepth, ++pTex)
-			{
-				if (*pDepth != 0)
-				{
-					int nHistValue = g_pDepthHist[*pDepth];
+            for (XnUInt x = 0; x < g_depthMD.XRes(); ++x, ++pDepth, ++pTex)
+            {
+                if (*pDepth != 0)
+                {
+                    int nHistValue = g_pDepthHist[*pDepth];
                     float ratio = (255-nHistValue)/255.0;
-					pTex->nRed = ar*ratio+br*(1-ratio);
-					pTex->nGreen = ag*ratio+bg*(1-ratio);
-					pTex->nBlue = ab*ratio+bb*(1-ratio);
-				}else{
+                    pTex->nRed = ar*ratio+br*(1-ratio);
+                    pTex->nGreen = ag*ratio+bg*(1-ratio);
+                    pTex->nBlue = ab*ratio+bb*(1-ratio);
+                }else{
                     pTex->nRed = ar;
-					pTex->nGreen = ag;
-					pTex->nBlue = ab;
+                    pTex->nGreen = ag;
+                    pTex->nBlue = ab;
                 }
-			}
+            }	            
+            pDepthRow += g_depthMD.XRes();
+            pTexRow += g_nTexMapX;
+        }
+    }else{
+        for (XnUInt y = 0; y < g_depthMD.YRes(); ++y)
+        {
+            const XnDepthPixel* pDepth = pDepthRow;
+            XnRGB24Pixel* pTex = pTexRow + g_depthMD.XOffset();
             
-			pDepthRow += g_depthMD.XRes();
-			pTexRow += g_nTexMapX;
-		}
-	}
+            for (XnUInt x = 0; x < g_depthMD.XRes(); ++x, ++pDepth, ++pTex, ++userPixels)
+            {
+                if (*pDepth != 0)
+                {
+                    if(*userPixels==activeUserId){
+                        int nHistValue = g_pDepthHist[*pDepth];
+                        float ratio = (255-nHistValue)/255.0;
+                        pTex->nRed = ar*ratio+uR*(1-ratio);
+                        pTex->nGreen = ag*ratio+uG*(1-ratio);
+                        pTex->nBlue = ab*ratio+uB*(1-ratio);
+                    }else{
+                        int nHistValue = g_pDepthHist[*pDepth];
+                        float ratio = (255-nHistValue)/255.0;
+                        if(*userPixels==0){
+                            ratio=fmin(1.0,ratio*1.4);
+                        }
+                        pTex->nRed = ar*ratio+br*(1-ratio);
+                        pTex->nGreen = ag*ratio+bg*(1-ratio);
+                        pTex->nBlue = ab*ratio+bb*(1-ratio);
+                    }
+                }else{
+                    pTex->nRed = ar;
+                    pTex->nGreen = ag;
+                    pTex->nBlue = ab;
+                }
+            }
+            
+            pDepthRow += g_depthMD.XRes();
+            pTexRow += g_nTexMapX;
+        }
+    }
     
 	// Create the OpenGL texture map
 	glTexParameteri(GL_TEXTURE_2D, GL_GENERATE_MIPMAP_SGIS, GL_TRUE);
@@ -315,28 +525,18 @@ using namespace xn;
 	glVertex2f(0, 0);
 	// upper right
 	glTexCoord2f((float)nXRes/(float)g_nTexMapX, 0);
-	glVertex2f(GL_WIN_SIZE_X, 0);
+	glVertex2f(self.frame.size.width, 0);
 	// bottom right
 	glTexCoord2f((float)nXRes/(float)g_nTexMapX, (float)nYRes/(float)g_nTexMapY);
-	glVertex2f(GL_WIN_SIZE_X, GL_WIN_SIZE_Y);
+	glVertex2f(self.frame.size.width, self.frame.size.height);
 	// bottom left
 	glTexCoord2f(0, (float)nYRes/(float)g_nTexMapY);
-	glVertex2f(0, GL_WIN_SIZE_Y);
+	glVertex2f(0, self.frame.size.height);
     
 	glEnd();
     glDisable(GL_TEXTURE_2D);
-    [self drawHand];
     glFlush();
     
-}
-
--(void)handLostId:(int)nId{
-    [app handLostId:nId];
-}
--(void)handId:(int)nId Pont:(XnPoint3D) point{
-    //g_depth.ConvertRealWorldToProjective(1, &point, &point);
-    //[self ScalePoint:point];
-    [app handId:nId X:point.X Y:point.Y Z:point.Z];
 }
 
 @end
